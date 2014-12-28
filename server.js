@@ -1,22 +1,17 @@
-var WebSocketServer = require('ws').Server
-  , wss = new WebSocketServer({ port: 4444 });
+var WsEmitterServer = require("./ws-emit-server.js");
 
-wss.broadcast = function(data) {
-  for (var i in this.clients)
-    console.log("------------------------------------------------")
-    console.log("Session Code: " + this.clients[i].upgradeReq.headers['sec-websocket-key'] )
-    console.log("Client Session Token: " + JSON.parse(data).sessionToken)
-    if (this.clients[i].upgradeReq.headers['sec-websocket-key'] != JSON.parse(data).sessionToken) {
-      console.log("Message Sent!")
-      this.clients[i].send(data);
-    }
-};
+var sm = new WsEmitterServer(3000);
 
-wss.on('connection', function(ws) {
-  sessionId = ws.upgradeReq.headers['sec-websocket-key']
-  ws.send(JSON.stringify({ session: sessionId }))
+sm.on("connection", function(conn){
+  console.log("user connected")
 
-  ws.on('message', function(message) {
-    wss.broadcast(message);
+  conn.on("change", function(message){
+    conn.broadcast("change", message)
   });
+
+  conn.on("cursor", function(message){
+  	conn.broadcast("cursor", message)
+  });
+
 });
+

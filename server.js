@@ -9,8 +9,8 @@ sm.on("connection", function(conn){
     conn.broadcast("change", message)
   });
 
-  conn.on("cursor", function(message){
-  	conn.broadcast("cursor", message)
+  conn.on("selection", function(message){
+  	conn.broadcast("selection", message)
   });
 
 });

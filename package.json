@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "ws": "~0.6.4",
-    "express": "~4.10.6"
+    "express": "~4.10.6",
+    "inherits": "~2.0.1"
   },
   "devDependencies": {},
   "scripts": {

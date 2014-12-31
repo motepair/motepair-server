@@ -13,5 +13,9 @@ sm.on("connection", function(conn){
   	conn.broadcast("selection", message)
   });
 
+  conn.on("open-file", function(message){
+  	conn.broadcast("open-file", message)
+  });
+
 });
 

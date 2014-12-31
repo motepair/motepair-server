@@ -1,10 +1,12 @@
 var WsEmitterServer = require("./ws-emit-server.js");
 
-var sm = new WsEmitterServer(3000);
+var port = process.env.PORT || 3000
+
+var sm = new WsEmitterServer(port);
 
 sm.on("connection", function(conn){
   console.log("user connected")
-
+  
   conn.on("change", function(message){
     conn.broadcast("change", message)
   });

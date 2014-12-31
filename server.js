@@ -21,6 +21,10 @@ sm.on("connection", function(conn){
   	conn.broadcast("close-file", message)
   });
 
+  conn.on("save-file", function(message){
+    conn.broadcast("save-file", message)
+  });
+
   conn.on("change-file", function(message){
     conn.broadcast("change-file", message)
   });

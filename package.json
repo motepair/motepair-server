@@ -4,7 +4,8 @@
   "description": "Server implementation for [atom remote pair](https://github.com/luizfilho/atom-remote-pair/)",
   "main": "server.js",
   "dependencies": {
-    "ws": "~0.6.4"
+    "ws": "~0.6.4",
+    "express": "~4.10.6"
   },
   "devDependencies": {},
   "scripts": {

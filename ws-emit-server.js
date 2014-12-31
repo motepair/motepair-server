@@ -1,11 +1,21 @@
 'use strict';
-
-module.exports = WsEmitterServer
-
-var ws = require('ws');
-
 var EventEmitter = require('events').EventEmitter
 var inherits = require('inherits')
+
+var http = require("http")
+var express = require("express")
+var app = express()
+var ws = require('ws');
+
+var port = process.env.PORT || 3000
+
+app.use(express.static(__dirname + "/"))
+
+var server = http.createServer(app)
+server.listen(port)
+
+
+module.exports = WsEmitterServer
 
 inherits(WsEmitterServer, EventEmitter)
 
@@ -15,7 +25,7 @@ var connections = [];
 
 function WsEmitterServer (port) {
 
-  this.ws = new ws.Server({ port: port });
+  this.ws = new ws.Server({ server: server });
 
   this.ws.on("connection", function connect(conn){
     connections.push(conn)

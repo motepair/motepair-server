@@ -21,5 +21,9 @@ sm.on("connection", function(conn){
   	conn.broadcast("close-file", message)
   });
 
+  conn.on("change-file", function(message){
+    conn.broadcast("change-file", message)
+  });
+
 });
 

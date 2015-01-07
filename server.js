@@ -5,6 +5,10 @@ var sm = new WsEmitterServer();
 sm.on("connection", function(conn){
   console.log("user connected")
 
+  conn.on("create-session", function(message) {
+    conn.createSession(message.sessionId)
+  });
+
   conn.on("change", function(message){
     conn.broadcast("change", message)
   });

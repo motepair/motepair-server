@@ -21,14 +21,13 @@ inherits(WsEmitterServer, EventEmitter)
 
 var emit = ws.super_.prototype.emit
 
-var connections = [];
+var connections = {}
 
 function WsEmitterServer (port) {
 
   this.ws = new ws.Server({ server: server });
 
   this.ws.on("connection", function connect(conn){
-    connections.push(conn)
 
     this.emit("connection", conn);
 
@@ -51,8 +50,6 @@ function WsEmitterServer (port) {
 
 }
 
-
-
 ws.prototype.write = function(event, message) {
   // emit.apply(this, [event, message])
 
@@ -61,20 +58,32 @@ ws.prototype.write = function(event, message) {
   this.send(JSON.stringify(data))
 }
 
+ws.prototype.createSession = function(sessionId) {
+  if (connections[sessionId] === undefined) {
+    connections[sessionId] = []
+    connections[sessionId].push(this)
+    this.sessionId = sessionId
+  } else {
+    connections[sessionId].push(this)
+  }
+}
+
 ws.prototype.broadcast = function(event, message){
   var senderId = this.getId();
 
-  connections.forEach(function each(conn){
-    var id = conn.getId();
-    
-    if (senderId !== id){
-      
-      var data = { event: event, data: message}
+  console.log(this.sessionId)
+  if (this.sessionId !== undefined) {
+    connections[this.sessionId].forEach(function each(conn){
+      var id = conn.getId();
 
-      conn.send(JSON.stringify(data))
-    }
-  });
+      if (senderId !== id){
 
+        var data = { event: event, data: message}
+
+        conn.send(JSON.stringify(data))
+      }
+    });
+  }
 }
 
 ws.prototype.getId = function(){

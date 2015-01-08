@@ -41,7 +41,7 @@ function WsEmitterServer (port) {
 
 
     conn.on("close", function close(code, message){
-      connections = connections.filter(function remove(el) {
+      connections[this.sessionId] = connections[this.sessionId].filter(function remove(el) {
         return el.getId() !== this.getId();
       }.bind(this));
     });
@@ -61,11 +61,11 @@ ws.prototype.write = function(event, message) {
 ws.prototype.createSession = function(sessionId) {
   if (connections[sessionId] === undefined) {
     connections[sessionId] = []
-    connections[sessionId].push(this)
-    this.sessionId = sessionId
-  } else {
-    connections[sessionId].push(this)
   }
+
+  connections[sessionId].push(this)
+
+  this.sessionId = sessionId
 }
 
 ws.prototype.broadcast = function(event, message){

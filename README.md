@@ -17,6 +17,7 @@ $ nodejs server.js
 
 ### Current Status
 Current backlog:
+  - [OT](http://en.wikipedia.org/wiki/Operational_transformation).
   - Exception Handling.
 
 Future:

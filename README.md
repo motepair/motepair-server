@@ -1,5 +1,26 @@
-# atom-remote-pair-server
+# Remote pair server implementation
 
-Server implementation for [atom remote pair](https://github.com/luizfilho/atom-remote-pair/)
+This is the server implementation for [atom remote pair](https://github.com/luizfilho/atom-remote-pair/)
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![Mind Blown](https://raw.github.com/leonmaia/atom-remote-pair-server/master/doc/mind-blown.gif)
+
+## Usage
+
+The usage now is a bit rudimentary and manual. Feel free to improve it and send a PR.
+
+```bash
+$ git clone git://github.com/leonmaia/atom-remote-pair-server.git remote-server
+$ cd remote-server
+$ npm install
+$ nodejs server.js
+```
+
+### Current Status
+Current backlog:
+  - Exception Handling.
+
+Future:
+  - Migrate to [Elixir](http://elixir-lang.org)
+
+
+

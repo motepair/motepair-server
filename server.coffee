@@ -3,6 +3,7 @@ livedb      = require 'livedb'
 livedbMongo = require 'livedb-mongo'
 ws          = require 'ws'
 sharejs     = require 'share'
+MessageHandler = require './message_handler'
 
 server = new ws.Server({ port: 3000 });
 
@@ -11,10 +12,10 @@ backend = livedb.client livedb.memory()
 
 share = sharejs.server.createClient {backend}
 
-numClients = 0
+connections = []
 
 server.on 'connection', (client) ->
-  numClients++
+  connections.push client
   stream = new Duplex objectMode:yes
   stream._write = (chunk, encoding, callback) ->
     console.log 's->c ', JSON.stringify(chunk)
@@ -27,20 +28,28 @@ server.on 'connection', (client) ->
   stream.headers = client.upgradeReq.headers
   stream.remoteAddress = client.upgradeReq.connection.remoteAddress
 
+  handler = new MessageHandler(connections, client)
+
   client.on 'message', (data) ->
     data = JSON.parse(data)
     console.log 'c->s ', JSON.stringify(data)
-    stream.push data
+
+    # Yes! We can control the information, man!
+    if data.a is 'meta'
+      handler.handle(data)
+    else
+      stream.push data
 
   stream.on 'error', (msg) ->
     client.stop()
 
   client.on 'close', (reason) ->
+    console.log 'client went away', connections.length
     stream.push null
     stream.emit 'close'
 
-    numClients--
-    console.log 'client went away', numClients
+    connections = (conn for conn in connections when conn.getId() isnt client.getId())
+    handler.updateConnections(connections)
 
   stream.on 'end', ->
     client.close()
@@ -48,3 +57,31 @@ server.on 'connection', (client) ->
   # ... and give the stream to ShareJS.
   share.listen stream
 
+
+ws::write = (event, message) ->
+  data =
+    event: event
+    data: message
+
+  @send JSON.stringify(data)
+
+# ws::createSession = (sessionId) ->
+#   connections[sessionId] = []  if connections[sessionId] is undefined
+#   connections[sessionId].push this
+#   @sessionId = sessionId
+
+ws::broadcast = (event, message) ->
+  senderId = @getId()
+  console.log @sessionId
+  if @sessionId isnt undefined
+    connections[@sessionId].forEach each = (conn) ->
+      id = conn.getId()
+      if senderId isnt id
+        data =
+          event: event
+          data: message
+
+        conn.send JSON.stringify(data)
+
+ws::getId = ->
+  @upgradeReq.headers["sec-websocket-key"]

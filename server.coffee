@@ -5,7 +5,7 @@ ws          = require 'ws'
 sharejs     = require 'share'
 MessageHandler = require './message_handler'
 
-server = new ws.Server({ port: 3000 });
+server = new ws.Server({ port: 3000 })
 
 backend = livedb.client livedb.memory()
 # backend.addProjection '_users', 'users', 'json0', {x:true}
@@ -16,7 +16,7 @@ connections = []
 
 server.on 'connection', (client) ->
   connections.push client
-  stream = new Duplex objectMode:yes
+  stream = new Duplex objectMode: yes
   stream._write = (chunk, encoding, callback) ->
     console.log 's->c ', JSON.stringify(chunk)
     if client.state isnt 'closed' # silently drop messages after the session is closed
@@ -28,7 +28,7 @@ server.on 'connection', (client) ->
   stream.headers = client.upgradeReq.headers
   stream.remoteAddress = client.upgradeReq.connection.remoteAddress
 
-  handler = new MessageHandler(connections, client)
+  handler = new MessageHandler(client)
 
   client.on 'message', (data) ->
     data = JSON.parse(data)
@@ -36,7 +36,7 @@ server.on 'connection', (client) ->
 
     # Yes! We can control the information, man!
     if data.a is 'meta'
-      handler.handle(data)
+      handler.handle(data, connections)
     else
       stream.push data
 
@@ -49,7 +49,6 @@ server.on 'connection', (client) ->
     stream.emit 'close'
 
     connections = (conn for conn in connections when conn.getId() isnt client.getId())
-    handler.updateConnections(connections)
 
   stream.on 'end', ->
     client.close()

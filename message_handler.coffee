@@ -13,10 +13,11 @@ class MessageHandler
     @connections.forEach (conn) ->
       id = conn.getId()
       if senderId isnt id
+        console.log('Sending': JSON.stringify(data) )
         conn.send JSON.stringify(data)
 
   handle: (data) ->
-    if data.type in ['open', 'close', 'save', 'selection']
+    if data.type in ['open', 'close', 'save']
       @broadcast data.type, data
 
 

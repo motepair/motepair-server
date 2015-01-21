@@ -4,12 +4,13 @@
   "description": "Server implementation for [atom remote pair](https://github.com/luizfilho/atom-remote-pair/)",
   "main": "server.js",
   "dependencies": {
-    "ws": "0.6.4",
+    "coffee-script": "^1.8.0",
     "express": "4.10.8",
     "inherits": "2.0.1",
     "livedb": "0.4.11",
     "livedb-mongo": "0.4.1",
-    "share": "0.7.3"
+    "share": "0.7.3",
+    "ws": "0.6.4"
   },
   "devDependencies": {},
   "scripts": {

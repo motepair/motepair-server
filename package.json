@@ -5,12 +5,13 @@
   "main": "server.js",
   "dependencies": {
     "coffee-script": "^1.8.0",
-    "express": "4.10.8",
+    "express": "~4.10.8",
     "inherits": "2.0.1",
     "livedb": "0.4.11",
     "livedb-mongo": "0.4.1",
     "share": "0.7.3",
-    "ws": "0.6.4"
+    "ws": "0.6.4",
+    "http": "0.0.0"
   },
   "devDependencies": {},
   "scripts": {

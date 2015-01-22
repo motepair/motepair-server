@@ -1,21 +1,28 @@
-{Duplex}    = require 'stream'
-livedb      = require 'livedb'
-livedbMongo = require 'livedb-mongo'
-ws          = require 'ws'
-sharejs     = require 'share'
-MessageHandler = require './message_handler'
 
-port = process.env.PORT || 3000
-server = new ws.Server({ port: port })
+MessageHandler  = require './message_handler'
+{Duplex}        = require 'stream'
+livedb          = require 'livedb'
+livedbMongo     = require 'livedb-mongo'
+sharejs         = require 'share'
+express         = require 'express'
+http            = require 'http'
+ws              = require 'ws'
+
+port            = process.env.PORT || 3000
+app             = express()
+server          = http.createServer(app)
+
+server.listen(port)
+
+wss = new ws.Server({server: server})
 
 backend = livedb.client livedb.memory()
-# backend.addProjection '_users', 'users', 'json0', {x:true}
 
 share = sharejs.server.createClient {backend}
 
 connections = []
 
-server.on 'connection', (client) ->
+wss.on 'connection', (client) ->
   connections.push client
   stream = new Duplex objectMode: yes
   stream._write = (chunk, encoding, callback) ->

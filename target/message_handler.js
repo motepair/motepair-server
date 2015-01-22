@@ -26,7 +26,7 @@ MessageHandler = (function() {
 
   MessageHandler.prototype.handle = function(data, connections) {
     var _ref;
-    if ((_ref = data.type) === 'open' || _ref === 'close' || _ref === 'save') {
+    if ((_ref = data.type) === 'open' || _ref === 'close' || _ref === 'save' || _ref === 'cursor') {
       return this.broadcast(data.type, data, connections);
     }
   };

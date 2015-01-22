@@ -14,7 +14,7 @@ class MessageHandler
         conn.send JSON.stringify(data)
 
   handle: (data, connections) ->
-    if data.type in ['open', 'close', 'save']
+    if data.type in ['open', 'close', 'save', 'cursor']
       @broadcast data.type, data, connections
 
 module.exports = MessageHandler

@@ -5,7 +5,8 @@ ws          = require 'ws'
 sharejs     = require 'share'
 MessageHandler = require './message_handler'
 
-server = new ws.Server({ port: 3000 })
+port = process.env.PORT || 3000
+server = new ws.Server({ port: port })
 
 backend = livedb.client livedb.memory()
 # backend.addProjection '_users', 'users', 'json0', {x:true}

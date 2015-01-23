@@ -23,7 +23,6 @@ share = sharejs.server.createClient {backend}
 connections = []
 
 wss.on 'connection', (client) ->
-  connections.push client
   stream = new Duplex objectMode: yes
   stream._write = (chunk, encoding, callback) ->
     console.log 's->c ', JSON.stringify(chunk)
@@ -43,8 +42,10 @@ wss.on 'connection', (client) ->
     console.log 'c->s ', JSON.stringify(data)
 
     # Yes! We can control the information, man!
-    if data.a is 'meta'
-      handler.handle(data, connections)
+    if data.a is 'meta' and data.type isnt 'init'
+      handler.handle(data, connections[client.sessionId])
+    else if data.a is 'meta' and data.type is 'init'
+      client.createSession data.sessionId
     else
       stream.push data
 
@@ -56,12 +57,12 @@ wss.on 'connection', (client) ->
     stream.push null
     stream.emit 'close'
 
-    connections = (conn for conn in connections when conn.getId() isnt client.getId())
+    connections[client.sessionId] = (conn for conn in connections[client.sessionId] when conn.getId() isnt client.getId())
 
   stream.on 'end', ->
     client.close()
 
-  # ... and give the stream to ShareJS.
+  # giving the stream to ShareJS.
   share.listen stream
 
 
@@ -72,23 +73,10 @@ ws::write = (event, message) ->
 
   @send JSON.stringify(data)
 
-# ws::createSession = (sessionId) ->
-#   connections[sessionId] = []  if connections[sessionId] is undefined
-#   connections[sessionId].push this
-#   @sessionId = sessionId
-
-ws::broadcast = (event, message) ->
-  senderId = @getId()
-  console.log @sessionId
-  if @sessionId isnt undefined
-    connections[@sessionId].forEach each = (conn) ->
-      id = conn.getId()
-      if senderId isnt id
-        data =
-          event: event
-          data: message
-
-        conn.send JSON.stringify(data)
+ws::createSession = (sessionId) ->
+  connections[sessionId] = []  if connections[sessionId] is undefined
+  connections[sessionId].push this
+  @sessionId = sessionId
 
 ws::getId = ->
   @upgradeReq.headers["sec-websocket-key"]

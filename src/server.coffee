@@ -66,13 +66,6 @@ wss.on 'connection', (client) ->
   share.listen stream
 
 
-ws::write = (event, message) ->
-  data =
-    event: event
-    data: message
-
-  @send JSON.stringify(data)
-
 ws::createSession = (sessionId) ->
   connections[sessionId] = []  if connections[sessionId] is undefined
   connections[sessionId].push this

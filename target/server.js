@@ -39,7 +39,6 @@ connections = [];
 
 wss.on('connection', function(client) {
   var handler, stream;
-  connections.push(client);
   stream = new Duplex({
     objectMode: true
   });
@@ -57,8 +56,10 @@ wss.on('connection', function(client) {
   client.on('message', function(data) {
     data = JSON.parse(data);
     console.log('c->s ', JSON.stringify(data));
-    if (data.a === 'meta') {
-      return handler.handle(data, connections);
+    if (data.a === 'meta' && data.type !== 'init') {
+      return handler.handle(data, connections[client.sessionId]);
+    } else if (data.a === 'meta' && data.type === 'init') {
+      return client.createSession(data.sessionId);
     } else {
       return stream.push(data);
     }
@@ -71,11 +72,12 @@ wss.on('connection', function(client) {
     console.log('client went away', connections.length);
     stream.push(null);
     stream.emit('close');
-    return connections = (function() {
-      var _i, _len, _results;
+    return connections[client.sessionId] = (function() {
+      var _i, _len, _ref, _results;
+      _ref = connections[client.sessionId];
       _results = [];
-      for (_i = 0, _len = connections.length; _i < _len; _i++) {
-        conn = connections[_i];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        conn = _ref[_i];
         if (conn.getId() !== client.getId()) {
           _results.push(conn);
         }
@@ -89,32 +91,12 @@ wss.on('connection', function(client) {
   return share.listen(stream);
 });
 
-ws.prototype.write = function(event, message) {
-  var data;
-  data = {
-    event: event,
-    data: message
-  };
-  return this.send(JSON.stringify(data));
-};
-
-ws.prototype.broadcast = function(event, message) {
-  var each, senderId;
-  senderId = this.getId();
-  console.log(this.sessionId);
-  if (this.sessionId !== void 0) {
-    return connections[this.sessionId].forEach(each = function(conn) {
-      var data, id;
-      id = conn.getId();
-      if (senderId !== id) {
-        data = {
-          event: event,
-          data: message
-        };
-        return conn.send(JSON.stringify(data));
-      }
-    });
+ws.prototype.createSession = function(sessionId) {
+  if (connections[sessionId] === void 0) {
+    connections[sessionId] = [];
   }
+  connections[sessionId].push(this);
+  return this.sessionId = sessionId;
 };
 
 ws.prototype.getId = function() {

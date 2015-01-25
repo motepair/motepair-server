@@ -2,7 +2,7 @@
 var MessageHandler;
 
 MessageHandler = (function() {
-  MessageHandler.prototype.lastMessage = null;
+  MessageHandler.prototype.lastMessages = {};
 
   function MessageHandler(conn) {
     this.conn = conn;
@@ -10,10 +10,10 @@ MessageHandler = (function() {
 
   MessageHandler.prototype.broadcast = function(type, data, connections) {
     var senderId;
-    if (JSON.stringify(data) === JSON.stringify(this.lastMessage)) {
+    if (JSON.stringify(data) === JSON.stringify(this.lastMessages[this.conn.sessionId])) {
       return;
     }
-    this.lastMessage = data;
+    this.lastMessages[this.conn.sessionId] = data;
     senderId = this.conn.getId();
     return connections.forEach(function(conn) {
       var id;
@@ -26,7 +26,7 @@ MessageHandler = (function() {
 
   MessageHandler.prototype.handle = function(data, connections) {
     var _ref;
-    if ((_ref = data.type) === 'open' || _ref === 'close' || _ref === 'save' || _ref === 'cursor') {
+    if ((_ref = data.type) === 'open' || _ref === 'close' || _ref === 'save') {
       return this.broadcast(data.type, data, connections);
     }
   };

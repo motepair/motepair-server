@@ -38,6 +38,8 @@ wss.on 'connection', (client) ->
   handler = new MessageHandler(client)
 
   client.on 'message', (data) ->
+    return if data is 'ping'
+
     data = JSON.parse(data)
     console.log 'c->s ', JSON.stringify(data)
 

@@ -1,18 +1,18 @@
 # Remote pair server implementation
 
-This is the server implementation for [atom remote pair](https://github.com/luizfilho/atom-remote-pair/)
+This is the server implementation for [atom remote pair](https://github.com/motepair/motepair)
 
-![Mind Blown](https://raw.github.com/leonmaia/atom-remote-pair-server/master/doc/mind-blown.gif)
+![Mind Blown](https://raw.github.com/motepair/motepair-server/master/doc/mind-blown.gif)
 
 ## Usage
 
 The usage now is a bit rudimentary and manual. Feel free to improve it and send a PR.
 
 ```bash
-$ git clone git://github.com/leonmaia/atom-remote-pair-server.git remote-server
+$ git clone git://github.com/motepair/motepair-server.git motepair-server
 $ cd remote-server
 $ npm install
-$ nodejs server.js
+$ nodejs target/server.js
 ```
 
 ### Current Status

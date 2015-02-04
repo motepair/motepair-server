@@ -16,11 +16,14 @@ $ nodejs target/server.js
 ```
 
 ### Current Status
-Current backlog:
-  - Exception Handling.
-
 Future:
-  - Migrate to [Elixir](http://elixir-lang.org)
+  - Study the migration to [GO](https://golang.org/) or [Elixir](http://elixir-lang.org/)
 
+## Contributors
 
+* [Leon Maia](http://github.com/leonmaia) ([@leonmaia](https://twitter.com/leonmaia))
+* [Luiz Filho](http://github.com/luizbafilho) ([@luizbafilho](http://twitter.com/luizbafilho))
 
+## License
+
+GPL v3 License. &copy; 2014 Leon Maia & Luiz Filho

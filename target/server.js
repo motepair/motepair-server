@@ -2,6 +2,8 @@
 (function() {
   var Duplex, MessageHandler, app, backend, connections, express, http, livedb, livedbMongo, port, server, share, sharejs, ws, wss;
 
+  require('newrelic');
+
   MessageHandler = require('./message_handler');
 
   Duplex = require('stream').Duplex;

@@ -1,3 +1,4 @@
+require 'newrelic'
 
 MessageHandler  = require './message_handler'
 {Duplex}        = require 'stream'

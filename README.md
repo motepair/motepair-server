@@ -10,7 +10,7 @@ The usage now is a bit rudimentary and manual. Feel free to improve it and send 
 
 ```bash
 $ git clone git://github.com/motepair/motepair-server.git motepair-server
-$ cd remote-server
+$ cd motepair-server
 $ npm install
 $ nodejs target/server.js
 ```

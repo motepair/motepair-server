@@ -6,12 +6,19 @@ livedb          = require 'livedb'
 livedbMongo     = require 'livedb-mongo'
 sharejs         = require 'share'
 express         = require 'express'
-http            = require 'http'
+getenv          = require 'getenv'
+https           = require 'https'
 ws              = require 'ws'
+fs              = require 'fs'
+
+privateKey      = fs.readFileSync(getenv('MOTEPAIR_KEY'), 'utf8')
+certificate     = fs.readFileSync(getenv('MOTEPAIR_CERT'), 'utf8')
+
+credentials = { key: privateKey, cert: certificate }
 
 port            = process.env.PORT || 3000
 app             = express()
-server          = http.createServer(app)
+server          = https.createServer(credentials, app)
 
 server.listen(port)
 

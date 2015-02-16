@@ -14,6 +14,8 @@ fs              = require 'fs'
 port            = process.env.PORT || 3000
 app             = express()
 
+app.use(express.static(__dirname + '/../public'));
+
 MOTEPAIR_KEY    = getenv('MOTEPAIR_KEY', '')
 MOTEPAIR_CERT   = getenv('MOTEPAIR_CERT', '')
 

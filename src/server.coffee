@@ -7,18 +7,31 @@ livedbMongo     = require 'livedb-mongo'
 sharejs         = require 'share'
 express         = require 'express'
 getenv          = require 'getenv'
-https           = require 'https'
+
 ws              = require 'ws'
 fs              = require 'fs'
 
-privateKey      = fs.readFileSync(getenv('MOTEPAIR_KEY'), 'utf8')
-certificate     = fs.readFileSync(getenv('MOTEPAIR_CERT'), 'utf8')
-
-credentials = { key: privateKey, cert: certificate }
-
 port            = process.env.PORT || 3000
 app             = express()
-server          = https.createServer(credentials, app)
+
+MOTEPAIR_KEY    = getenv('MOTEPAIR_KEY', '')
+MOTEPAIR_CERT   = getenv('MOTEPAIR_CERT', '')
+
+if MOTEPAIR_KEY isnt '' and MOTEPAIR_CERT isnt ''
+  httpServ     = require 'https'
+
+  privateKey   = fs.readFileSync(MOTEPAIR_KEY, 'utf8')
+  certificate  = fs.readFileSync(MOTEPAIR_CERT, 'utf8')
+  credentials  = { key: privateKey, cert: certificate }
+  server       = httpServ.createServer(credentials, app)
+
+  console.log "Listening on https://localhost:#{port}/"
+else
+  httpServ = require 'http'
+  server   = httpServ.createServer(app)
+
+  console.log "Listening on http://localhost:#{port}/"
+
 
 server.listen(port)
 

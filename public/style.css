@@ -11,7 +11,7 @@ html, body{
 
 .container {
   text-align: center;
-  padding-top: 250px;
+  padding-top: 200px;
 }
 
 p {
@@ -66,12 +66,13 @@ p a {
   text-align:center;
   text-shadow:1px 1px 0px #689324;
 }
-.classname:hover {
+.btn:hover {
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8cb82b), color-stop(1, #9dce2c) );
   background:-moz-linear-gradient( center top, #8cb82b 5%, #9dce2c 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cb82b', endColorstr='#9dce2c');
   background-color:#8cb82b;
-}.classname:active {
+}
+.btn:active {
   position:relative;
   top:1px;
 }

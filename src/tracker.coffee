@@ -1,5 +1,4 @@
 Keen   = require 'keen-js'
-geoip  = require 'geoip-lite'
 getenv = require 'getenv'
 
 class Tracker

@@ -74,7 +74,7 @@ wss.on 'connection', (client) ->
     if data.a is 'meta' and data.type isnt 'init'
       handler.handle(data, connections[client.sessionId])
     else if data.a is 'meta' and data.type is 'init'
-      client.createSession data.sessionId
+      client.createSession data
     else
       stream.push data
 
@@ -96,10 +96,13 @@ wss.on 'connection', (client) ->
   share.listen stream
 
 
-ws::createSession = (sessionId) ->
-  connections[sessionId] = []  if connections[sessionId] is undefined
-  connections[sessionId].push this
-  @sessionId = sessionId
+ws::createSession = (data) ->
+  connections[data.sessionId] = []  if connections[data.sessionId] is undefined
+  connections[data.sessionId].push this
+
+  @sessionId       = data.sessionId
+  @atomVersion     = data.atomVersion
+  @motepairVersion = data.motepairVersion
 
 ws::getId = ->
   @upgradeReq.headers["sec-websocket-key"]

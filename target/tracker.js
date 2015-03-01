@@ -24,20 +24,15 @@
     };
 
     Tracker.prototype.connectionClosed = function(client, remoteAddress) {
-      var connection, geo;
+      var connection;
       if (!this.ready()) {
         return;
       }
-      geo = geoip.lookup(remoteAddress) || {};
-      console.log('remoteAddress', remoteAddress, geo);
       connection = {
         sessionId: client.sessionId,
-        geo: {
-          country: geo.country,
-          region: geo.region,
-          city: geo.city
-        },
-        duration: (new Date() - client.sessionStarted) / 60000
+        duration: (new Date() - client.sessionStarted) / 60000,
+        atomVersion: client.atomVersion,
+        motepairVersion: client.motepairVersion
       };
       return this.client.addEvent("connections", connection, function(err, res) {
         if (err) {

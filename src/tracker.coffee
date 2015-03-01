@@ -22,18 +22,11 @@ class Tracker
   connectionClosed: (client, remoteAddress) ->
     return unless @ready()
 
-    geo = geoip.lookup(remoteAddress) || {}
-
-    console.log('remoteAddress', remoteAddress, geo)
-
     connection = {
       sessionId: client.sessionId,
-      geo: {
-        country: geo.country,
-        region: geo.region,
-        city: geo.city
-      },
-      duration: (new Date() - client.sessionStarted)/60000 # in minutes
+      duration: (new Date() - client.sessionStarted)/60000, # in minutes
+      atomVersion: client.atomVersion,
+      motepairVersion: client.motepairVersion
     }
 
     @client.addEvent "connections", connection, (err, res) ->

@@ -93,7 +93,7 @@
       if (data.a === 'meta' && data.type !== 'init') {
         return handler.handle(data, connections[client.sessionId]);
       } else if (data.a === 'meta' && data.type === 'init') {
-        return client.createSession(data.sessionId);
+        return client.createSession(data);
       } else {
         return stream.push(data);
       }
@@ -126,12 +126,14 @@
     return share.listen(stream);
   });
 
-  ws.prototype.createSession = function(sessionId) {
-    if (connections[sessionId] === void 0) {
-      connections[sessionId] = [];
+  ws.prototype.createSession = function(data) {
+    if (connections[data.sessionId] === void 0) {
+      connections[data.sessionId] = [];
     }
-    connections[sessionId].push(this);
-    return this.sessionId = sessionId;
+    connections[data.sessionId].push(this);
+    this.sessionId = data.sessionId;
+    this.atomVersion = data.atomVersion;
+    return this.motepairVersion = data.motepairVersion;
   };
 
   ws.prototype.getId = function() {

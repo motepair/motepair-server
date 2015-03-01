@@ -29,6 +29,7 @@
         return;
       }
       geo = geoip.lookup(remoteAddress) || {};
+      console.log('remoteAddress', remoteAddress, geo);
       connection = {
         sessionId: client.sessionId,
         geo: {

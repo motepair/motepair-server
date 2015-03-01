@@ -12,7 +12,8 @@
     "livedb-mongo": "0.4.1",
     "newrelic": "~1.15.1",
     "share": "0.7.3",
-    "ws": "0.6.4"
+    "ws": "0.6.4",
+    "keen-js": "~3.2.3"
   },
   "devDependencies": {},
   "scripts": {

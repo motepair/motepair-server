@@ -1,6 +1,7 @@
 require 'newrelic'
 
 MessageHandler  = require './message_handler'
+Tracker         = require './tracker'
 {Duplex}        = require 'stream'
 livedb          = require 'livedb'
 livedbMongo     = require 'livedb-mongo'
@@ -44,8 +45,10 @@ backend = livedb.client livedb.memory()
 share = sharejs.server.createClient {backend}
 
 connections = []
+connectionsDuration = []
 
 wss.on 'connection', (client) ->
+  tracker = new Tracker
   stream = new Duplex objectMode: yes
   stream._write = (chunk, encoding, callback) ->
     console.log 's->c ', JSON.stringify(chunk)
@@ -60,13 +63,14 @@ wss.on 'connection', (client) ->
 
   handler = new MessageHandler(client)
 
+  client.sessionStarted = new Date()
+
   client.on 'message', (data) ->
     return if data is 'ping'
 
     data = JSON.parse(data)
     console.log 'c->s ', JSON.stringify(data)
 
-    # Yes! We can control the information, man!
     if data.a is 'meta' and data.type isnt 'init'
       handler.handle(data, connections[client.sessionId])
     else if data.a is 'meta' and data.type is 'init'
@@ -81,6 +85,7 @@ wss.on 'connection', (client) ->
     console.log 'client went away', connections.length
     stream.push null
     stream.emit 'close'
+    tracker.connectionClosed(client, stream.remoteAddress)
 
     connections[client.sessionId] = (conn for conn in connections[client.sessionId] when conn.getId() isnt client.getId())
 

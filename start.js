@@ -11,8 +11,6 @@
 
   livedb = require('livedb');
 
-  livedbMongo = require('livedb-mongo');
-
   sharejs = require('share');
 
   express = require('express');

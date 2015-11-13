@@ -2,7 +2,6 @@
 (function() {
   var Duplex, MOTEPAIR_CERT, MOTEPAIR_KEY, MessageHandler, Tracker, app, backend, certificate, connections, connectionsDuration, credentials, express, fs, getenv, httpServ, livedb, livedbMongo, port, privateKey, server, share, sharejs, ws, wss;
 
-  require('newrelic');
 
   MessageHandler = require('./message_handler');
 
@@ -24,11 +23,12 @@
 
   fs = require('fs');
 
-  port = process.env.PORT || 3000;
+  port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+  host = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1";
 
   app = express();
 
-  app.use(express["static"](__dirname + '/../public'));
+  app.use(express["static"](__dirname + '/public'));
 
   MOTEPAIR_KEY = getenv('MOTEPAIR_KEY', '');
 
@@ -43,14 +43,14 @@
       cert: certificate
     };
     server = httpServ.createServer(credentials, app);
-    console.log("Listening on https://localhost:" + port + "/");
+    console.log("Listening on https://"+host+":" + port + "/");
   } else {
     httpServ = require('http');
     server = httpServ.createServer(app);
-    console.log("Listening on http://localhost:" + port + "/");
+    console.log("Listening on http://"+host+":" + port + "/");
   }
 
-  server.listen(port);
+  server.listen(port, host);
 
   wss = new ws.Server({
     server: server

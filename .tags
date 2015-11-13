@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+name	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "name": "atom-remote-pair-server",$/;"	function	line:2
+version	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "version": "0.0.0",$/;"	function	line:3
+description	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "description": "Server implementation for [atom remote pair](https:\/\/github.com\/luizfilho\/atom-remote-pair\/)",$/;"	function	line:4
+main	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "main": "server.js",$/;"	function	line:5
+dependencies	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "dependencies": {$/;"	function	line:6
+coffee-script	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "coffee-script": "^1.8.0",$/;"	function	line:7
+express	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "express": "~4.10.8",$/;"	function	line:8
+getenv	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "getenv": "^0.5.0",$/;"	function	line:9
+inherits	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "inherits": "2.0.1",$/;"	function	line:10
+livedb	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "livedb": "0.4.11",$/;"	function	line:11
+livedb-mongo	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "livedb-mongo": "0.4.1",$/;"	function	line:12
+newrelic	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "newrelic": "~1.15.1",$/;"	function	line:13
+share	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "share": "0.7.3",$/;"	function	line:14
+ws	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "ws": "0.6.4",$/;"	function	line:15
+keen-js	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "keen-js": "~3.2.3"$/;"	function	line:16
+devDependencies	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "devDependencies": {},$/;"	function	line:18
+scripts	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "scripts": {$/;"	function	line:19
+test	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "test": "echo \\"Error: no test specified\\" && exit 1",$/;"	function	line:20
+start	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "start": "node server.js"$/;"	function	line:21
+repository	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "repository": {$/;"	function	line:23
+type	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "type": "git",$/;"	function	line:24
+url	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "url": "git:\/\/github.com\/leonmaia\/atom-remote-pair-server.git"$/;"	function	line:25
+author	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "author": "",$/;"	function	line:27
+license	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "license": "BSD-2-Clause",$/;"	function	line:28
+bugs	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^  "bugs": {$/;"	function	line:29
+url	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/package.json	/^    "url": "https:\/\/github.com\/leonmaia\/atom-remote-pair-server\/issues"$/;"	function	line:30
+html	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^<html>$/;"	function	line:2
+head	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^<head>$/;"	function	line:3
+link	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^  <link href='\/\/fonts.googleapis.com\/css?family=Roboto+Condensed:700' rel='stylesheet' type='text\/css'>$/;"	function	line:4
+title	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^  <title>Motepair<\/title>$/;"	function	line:5
+link	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^  <link href="style.css" rel="stylesheet" type="text\/css"\/>$/;"	function	line:6
+body	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^<body>$/;"	function	line:8
+div	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^  <div class="container">$/;"	function	line:9
+p	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^    <p class='name'>Motepair<\/p>$/;"	function	line:10
+p	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^    <p>The best Remote Pair solution to <a href="http:\/\/atom.io" target="_blank">Atom<\/a><\/p>$/;"	function	line:11
+a	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/index.html	/^    <a href="http:\/\/atom.io\/packages\/motepair" class="btn" target="_blank">Download<\/a>$/;"	function	line:12
+html, body	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^html, body{$/;"	function	line:1
+.container	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^.container {$/;"	function	line:12
+p	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^p {$/;"	function	line:17
+p a	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^p a {$/;"	function	line:21
+.name	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^.name {$/;"	function	line:24
+.btn	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^.btn {$/;"	function	line:34
+.btn:hover	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^.btn:hover {$/;"	function	line:69
+.btn:active	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/public/style.css	/^.btn:active {$/;"	function	line:75
+Remote pair server implementation	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/README.md	/^# Remote pair server implementation$/;"	function	line:1
+Usage	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/README.md	/^## Usage$/;"	function	line:7
+Current Status	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/README.md	/^### Current Status$/;"	function	line:18
+Contributors	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/README.md	/^## Contributors$/;"	function	line:22
+License	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/README.md	/^## License$/;"	function	line:27
+MessageHandler	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/message_handler.coffee	/^class MessageHandler$/;"	function	line:1
+constructor	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/message_handler.coffee	/^  constructor: (@conn) ->$/;"	function	line:4
+broadcast	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/message_handler.coffee	/^  broadcast: (type, data, connections) ->$/;"	function	line:6
+handle	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/message_handler.coffee	/^  handle: (data, connections) ->$/;"	function	line:15
+exports.config.app_name	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/newrelic.js	/^exports.config = {$/;"	property	line:6
+stream._write	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/server.coffee	/^  stream._write = (chunk, encoding, callback) ->$/;"	function	line:53
+stream._read	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/server.coffee	/^  stream._read = -> # Ignore. You can't control the information, man!$/;"	function	line:59
+ws::createSession	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/server.coffee	/^ws::createSession = (data) ->$/;"	function	line:99
+ws::getId	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/server.coffee	/^ws::getId = ->$/;"	function	line:107
+Tracker	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/tracker.coffee	/^class Tracker$/;"	function	line:4
+constructor	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/tracker.coffee	/^  constructor: ->$/;"	function	line:6
+ready	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/tracker.coffee	/^  ready: ->$/;"	function	line:18
+connectionClosed	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/src/tracker.coffee	/^  connectionClosed: (client, remoteAddress) ->$/;"	function	line:21
+MessageHandler	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/message_handler.js	/^    function MessageHandler(conn) {$/;"	function	line:8
+broadcast	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/message_handler.js	/^    MessageHandler.prototype.broadcast = function(type, data, connections) {$/;"	function	line:12
+handle	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/message_handler.js	/^    MessageHandler.prototype.handle = function(data, connections) {$/;"	function	line:28
+exports.config.app_name	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/newrelic.js	/^exports.config = {$/;"	property	line:7
+credentials.key	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^    credentials = {$/;"	property	line:41
+credentials.cert	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^      key: privateKey,$/;"	property	line:42
+_write	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^    stream._write = function(chunk, encoding, callback) {$/;"	function	line:75
+_read	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^    stream._read = function() {};$/;"	function	line:82
+createSession	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^  ws.prototype.createSession = function(data) {$/;"	function	line:129
+ws	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^  });$/;"	class	line:127
+ws.createSession	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^  ws.prototype.createSession = function(data) {$/;"	method	line:129
+getId	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^  ws.prototype.getId = function() {$/;"	function	line:139
+ws.getId	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/server.js	/^  ws.prototype.getId = function() {$/;"	method	line:139
+Tracker	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/tracker.js	/^    function Tracker() {$/;"	function	line:10
+ready	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/tracker.js	/^    Tracker.prototype.ready = function() {$/;"	function	line:20
+connectionClosed	/Users/jt.whissel/Documents/stuff/motepairph/motepair-server/target/tracker.js	/^    Tracker.prototype.connectionClosed = function(client, remoteAddress) {$/;"	function	line:24

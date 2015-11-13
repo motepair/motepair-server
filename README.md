@@ -23,6 +23,7 @@ Future:
 
 * [Leon Maia](http://github.com/leonmaia) ([@leonmaia](https://twitter.com/leonmaia))
 * [Luiz Filho](http://github.com/luizbafilho) ([@luizbafilho](http://twitter.com/luizbafilho))
+* [Jt Whissel](http://github.com/phara0h)
 
 ## License
 

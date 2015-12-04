@@ -12,7 +12,7 @@ The usage now is a bit rudimentary and manual. Feel free to improve it and send 
 $ git clone git://github.com/motepair/motepair-server.git motepair-server
 $ cd motepair-server
 $ npm install
-$ nodejs target/server.js
+$ node target/server.js
 ```
 
 ### Current Status

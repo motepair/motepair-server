@@ -48,7 +48,7 @@
     console.log("Listening on http://"+host+":" + port + "/");
   }
 
-  server.listen(port, host);
+  server.listen(port);
 
   wss = new ws.Server({
     server: server

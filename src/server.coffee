@@ -1,4 +1,5 @@
-require 'newrelic'
+if process.env.NEW_RELIC_LICENSE_KEY?
+  require 'newrelic'
 
 MessageHandler  = require './message_handler'
 Tracker         = require './tracker'
@@ -12,7 +13,9 @@ getenv          = require 'getenv'
 ws              = require 'ws'
 fs              = require 'fs'
 
-port            = process.env.PORT || 3000
+port            = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000
+ip              = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP   || '0.0.0.0'
+
 app             = express()
 
 app.use(express.static(__dirname + '/../public'));
@@ -36,7 +39,7 @@ else
   console.log "Listening on http://localhost:#{port}/"
 
 
-server.listen(port)
+server.listen(port, ip)
 
 wss = new ws.Server({server: server})
 

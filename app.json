@@ -1,0 +1,7 @@
+{
+  "name": "Motepair Server",
+  "description": "Motepair Server",
+  "repository": "https://github.com/motepair/motepair-server",
+  "logo": "",
+  "keywords": ["node", "motpair", "pair-programming"]
+}

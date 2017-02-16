@@ -2,6 +2,6 @@
   "name": "Motepair Server",
   "description": "Motepair Server",
   "repository": "https://github.com/motepair/motepair-server",
-  "logo": "",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "motpair", "pair-programming"]
 }

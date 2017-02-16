@@ -15,6 +15,9 @@ $ npm install
 $ nodejs target/server.js
 ```
 
+## Deploy
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ### Current Status
 Future:
   - Study the migration to [GO](https://golang.org/) or [Elixir](http://elixir-lang.org/)
